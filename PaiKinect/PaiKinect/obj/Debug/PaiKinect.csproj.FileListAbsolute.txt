@@ -1,0 +1,17 @@
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\PaiKinect.exe.config
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.csprojResolveAssemblyReference.cache
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\MainWindow.baml
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\MainWindow.g.cs
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\App.g.cs
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect_MarkupCompile.cache
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.g.resources
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.Properties.Resources.resources
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.csproj.GenerateResource.Cache
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\PaiKinect.exe
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\PaiKinect.pdb
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Coding4Fun.Kinect.Wpf.dll
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Microsoft.Expression.Drawing.dll
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.exe
+c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.pdb
+C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Microsoft.Kinect.Toolkit.Controls.dll
+C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Microsoft.Kinect.Toolkit.Interaction.dll
