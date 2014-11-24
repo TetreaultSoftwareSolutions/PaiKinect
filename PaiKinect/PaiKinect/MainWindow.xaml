@@ -11,10 +11,10 @@
 
 
 
-    <Grid Canvas.Top="-16" x:Name="LayoutRoot">
+    <Grid Canvas.Top="-16" x:Name="LayoutRoot" Width="1920" Height="1080">
 
-        <Canvas x:Name="myCanvas1" Margin="0,0,0,0">
-            
+        <Canvas x:Name="myCanvas1" Margin="10,0,-10,-0.4">
+
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="White" Offset="0"/>
@@ -28,13 +28,61 @@
                 </Button.Effect>
             </Button>
 
+            <Button x:Name="ERASER" Content="ERASER" Height="182" Canvas.Left="50" Canvas.Top="279" Width="137" Click="ERASER_Click" Background="DeepSkyBlue" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="RED" Content="RED" Height="56" Canvas.Left="1150" Canvas.Top="50" Width="137" Click="RED_Click" Background="Red" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="GREEN" Content="GREEN" Height="56" Canvas.Left="1150" Canvas.Top="106" Width="137" Click="GREEN_Click" Background="Green" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="YELLOW" Content="YELLOW" Height="56" Canvas.Left="1150" Canvas.Top="162" Width="137" Click="YELLOW_Click" Background="Yellow" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="BLUE" Content="BLUE" Height="56" Canvas.Left="1150" Canvas.Top="218" Width="137" Click="BLUE_Click" Background="Blue" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="PURPLE" Content="PURPLE" Height="56" Canvas.Left="1150" Canvas.Top="274" Width="137" Click="PURPLE_Click" Background="Purple" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="ORANGE" Content="ORANGE" Height="56" Canvas.Left="1150" Canvas.Top="330" Width="137" Click="ORANGE_Click" Background="Orange" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="BLACK" Content="BLACK" Height="56" Canvas.Left="1150" Canvas.Top="386" Width="137" Click="BLACK_Click" Background="Gray" FontSize="48" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
             <Controls:HoverButton Margin="0" Padding="0" x:Name="kinectButton" ImageSize="50"                                            
                                 ImageSource="/WpfApplication1;component/Images/myhand.png"  
                                 ActiveImageSource="/WpfApplication1;component/Images/myhand.png" 
                                 TimeInterval="1000"  Panel.ZIndex="1000" Canvas.Left="0" Canvas.Top="0" />
 
 
-            
+
         </Canvas>
     </Grid>
 </Page>

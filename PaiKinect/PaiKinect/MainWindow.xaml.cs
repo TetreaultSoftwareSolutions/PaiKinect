@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
+
 using Microsoft.Kinect.Toolkit.Controls;
 using Microsoft.Kinect.Toolkit.Interaction;
 
@@ -35,17 +37,20 @@ namespace PaiKinect
 
         private PaintHandler paintBrush;
 
+        
+
         public Point currentPoint;
 
         public Point? cursorPosition = null;
         public Point? _pastCursorPosition = null;
         //private Point _pastCursorPosition = new Point(300,300);
         private SolidColorBrush _previousFill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        public SolidColorBrush brushColor = new SolidColorBrush(Color.FromRgb(0, 0, 0));
 
         //InteractionStream interactionStream;
 
-        List<Button> buttons;
-        static Button selected;
+        List<System.Windows.Controls.Button> buttons;
+        static System.Windows.Controls.Button selected;
 
       
 
@@ -68,13 +73,9 @@ namespace PaiKinect
             this.Loaded += Main_Loaded;
             KinectRegion.AddHandPointerMoveHandler(this, OnHandPointerMove);
             paintBrush = new PaintHandler(cursorPosition, _previousFill);
-            
 
         }
-
-        
-        
-    
+                                      
 
         private void OnHandPointerMove(object sender, HandPointerEventArgs e)
         {
@@ -84,7 +85,7 @@ namespace PaiKinect
         //Make the buttons that will appear in the application
         private void InitializeButtons()
         {
-            buttons = new List<Button> { QUIT };
+            buttons = new List<System.Windows.Controls.Button> { QUIT, ERASER, RED, ORANGE, BLUE, GREEN, YELLOW, BLACK, PURPLE };
         }
         //Make sure that the Kinect is in a nice generic state so nothing can go wrong
         private void UnregisterEvents()
@@ -126,7 +127,7 @@ namespace PaiKinect
                         this.Kinect = KinectSensor.KinectSensors.FirstOrDefault(x => x.Status == KinectStatus.Connected);
                         if (this.Kinect == null)
                         {
-                            MessageBox.Show("Sensor Disconnected. Please reconnect to continue.");
+                            System.Windows.MessageBox.Show("Sensor Disconnected. Please reconnect to continue.");
                         }
                     }
                     break;
@@ -272,7 +273,7 @@ namespace PaiKinect
                         byte _r1 = (byte)r.Next(0, 255);
                         byte _r2 = (byte)r.Next(0, 255);
                         byte _r3 = (byte)r.Next(0, 255);
-                        _previousFill = new SolidColorBrush(Color.FromRgb(_r1,_r2,_r3));
+                        //_previousFill = new SolidColorBrush(Color.FromRgb(_r1,_r2,_r3));
 
                         if (_pastCursorPosition.Value.X > handX)
                         {
@@ -324,13 +325,13 @@ namespace PaiKinect
         }
 
         //detect if hand is overlapping over any button
-        private bool isHandOver(FrameworkElement hand, List<Button> buttonslist)
+        private bool isHandOver(FrameworkElement hand, List<System.Windows.Controls.Button> buttonslist)
         {
             var handTopLeft = new Point(Canvas.GetLeft(hand), Canvas.GetTop(hand));
             var handX = handTopLeft.X + hand.ActualWidth / 2;
             var handY = handTopLeft.Y + hand.ActualHeight / 2;
 
-            foreach (Button target in buttonslist)
+            foreach (System.Windows.Controls.Button target in buttonslist)
             {
 
                 if (target != null)
@@ -404,13 +405,89 @@ namespace PaiKinect
         //placeholder, ignore
         void kinectButton_Click(object sender, RoutedEventArgs e)
         {
-            selected.RaiseEvent(new RoutedEventArgs(Button.ClickEvent, selected));
+            selected.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent, selected));
         }
         //when the quit button is clicked, exit the application
+
+        private void ERASER_Click(object sender, RoutedEventArgs e)
+        {
+         
+
+            if (ERASER.Background == Brushes.DeepSkyBlue)
+            {
+                ERASER.Background = Brushes.DimGray;
+                brushColor = _previousFill;
+                _previousFill = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                
+            }
+            else
+            {
+                ERASER.Background = Brushes.DeepSkyBlue;
+                _previousFill = brushColor;
+
+            }
+        }
+
+        private void RED_Click(object sender, RoutedEventArgs e)
+        {
+
+
+           _previousFill = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            brushColor = _previousFill;
+            
+        }
+        private void YELLOW_Click(object sender, RoutedEventArgs e)
+        {
+
+            _previousFill = new SolidColorBrush(Color.FromRgb(255, 255, 0));
+            brushColor = _previousFill;
+           
+        }
+        private void GREEN_Click(object sender, RoutedEventArgs e)
+        {
+
+            _previousFill = new SolidColorBrush(Color.FromRgb(0, 128, 0));
+            brushColor = _previousFill;
+            
+        }
+        private void BLUE_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            _previousFill = new SolidColorBrush(Color.FromRgb(0, 0, 255));
+            brushColor = _previousFill;
+        }
+        private void PURPLE_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            _previousFill = new SolidColorBrush(Color.FromRgb(128, 0, 128));
+            brushColor = _previousFill;
+
+            
+        }
+        private void ORANGE_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            _previousFill = new SolidColorBrush(Color.FromRgb(255, 102, 0));
+            brushColor = _previousFill;
+        }
+        
+        private void BLACK_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            _previousFill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            brushColor = _previousFill;
+        }
+
+
+        
         private void QUIT_Click(object sender, RoutedEventArgs e)
         {
             UnregisterEvents();
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
 
         #endregion
@@ -443,5 +520,7 @@ namespace PaiKinect
 
         #endregion
 
+
+        
     }
 }
