@@ -20,19 +20,26 @@ using Microsoft.Kinect.Toolkit.Interaction;
 
 namespace PaiKinect
 {
+    /*
+     * This class handles all of the painting being done in this application.
+     */
     class PaintHandler
     {
 
         
-        public Point? point;
-        public SolidColorBrush brush;
+        public Point? point;  //The current point that the user's hand is on
+        public SolidColorBrush brush;  //The brush being used to draw the line
         
+        /*
+         * This constructor instantiates the brush and point variables.
+         */
         public PaintHandler(Point? inputPoint, SolidColorBrush brush){
             
             this.point = inputPoint;
             this.brush = brush;
         }
-        
+
+        #region Getters_and_Setters
         public void setPoint(Point? point)
         {
             this.point = point;
@@ -42,7 +49,12 @@ namespace PaiKinect
         {
             this.brush = brush;
         }
-        
+        #endregion
+
+        /*
+         * This method takes two floats, and creates a line based on those floats passed in (by the kinect sensor). It
+         * then returns the line created.
+         */
         public Line DrawLine(float x, float y)
         {
 

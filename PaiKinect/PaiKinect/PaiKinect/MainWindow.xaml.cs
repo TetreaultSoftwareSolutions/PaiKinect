@@ -35,7 +35,9 @@ namespace PaiKinect
         private int _ColorImageStride;
         private Skeleton[] FrameSkeletons;
 
-        private PaintHandler paintBrush;
+        private double _HandPositionZStyle;
+
+        private PaintHandler paintBrush;                   // I AM NOT IN CONTROL OF ALL THE CODEE MUHAHAHA
 
         
 
@@ -217,17 +219,23 @@ namespace PaiKinect
                     else
                     {
                         Joint primaryHand = GetPrimaryHand(skeleton);
-                        TrackHand(primaryHand);
-
+                        Joint primaryElbow = GetPrimaryElbow(skeleton);
+                        Joint leftShoulder = GetLeftShoulder(skeleton);
+                        Joint leftHand = GetLeftHand(skeleton);
+                        
+                        //TrackHand(primaryHand, primaryElbow);
+                        TrackHand(primaryHand, leftHand, leftShoulder);
                     }
                 }
             }
         }
 
         //track and display hand
-        private void TrackHand(Joint hand)
+        private void TrackHand(Joint hand, /*Joint elbow*/ Joint leftHand, Joint leftShoulder)
         {
-            
+
+
+
             if (hand.TrackingState == JointTrackingState.NotTracked)
             {
                 kinectButton.Visibility = System.Windows.Visibility.Collapsed;
@@ -258,70 +266,111 @@ namespace PaiKinect
                 }
 
                 cursorPosition = new Point(handX, handY);
-                
-                
-                if (!isHandOver(kinectButton, buttons))
+
+
+
+
+                //bool _handLifted = false;
+                /*_HandPositionZStyle = hand.Position.Z;
+                if(hand.Position.Z > _HandPositionZStyle)
                 {
-                    if (_pastCursorPosition == null)
-                    {
-                        
-                        kinectButton.Visibility = System.Windows.Visibility.Visible;
-                    }
-                    else
-                    {
-                        Random r = new Random();
-                        byte _r1 = (byte)r.Next(0, 255);
-                        byte _r2 = (byte)r.Next(0, 255);
-                        byte _r3 = (byte)r.Next(0, 255);
-                        //_previousFill = new SolidColorBrush(Color.FromRgb(_r1,_r2,_r3));
+                    _handLifted = true;
+                }
+                else
+                {
+                    _handLifted = false;
+                }*/
+                /*double _elbowToHandValue = elbow.Position.Y + hand.Position.Y;
+                if((elbow.Position.Y + hand.Position.Y) > _elbowToHandValue)
+                {
+                    _handLifted = true;
+                }
+                else
+                {
+                    _handLifted = false;
+                }*/
 
-                        if (_pastCursorPosition.Value.X > handX)
+                Joint lh = leftHand;
+                Joint ls = leftShoulder;
+
+                bool isup = lh.Position.Y > ls.Position.Y; //This value is 'true' if the user's left hand is above their left shoulder, and false if it's not.
+                
+                //If the hand has been lifted, reset the past cursor position so that it doesnt pick up where you left off.
+                if(isup == true)
+                {
+                    _pastCursorPosition = new Point(handX, handY);
+                }
+                else
+                {
+                    if (!isHandOver(kinectButton, buttons))
+                    {
+                        if (_pastCursorPosition == null)
                         {
-                            if ((handX - _pastCursorPosition.Value.X) < -50)
-                            {
-                                //DrawLine(handX, handY);
-                                paintBrush.setPoint(_pastCursorPosition);
-                                paintBrush.setBrush(_previousFill);
-                                Line l = paintBrush.DrawLine(handX, handY);
-                                myCanvas1.Children.Add(l);
 
-
-                            }
-                            else
-                            {
-                                //DrawLine(handX, handY);
-                                paintBrush.setPoint(_pastCursorPosition);
-                                paintBrush.setBrush(_previousFill);
-                                Line l = paintBrush.DrawLine(handX, handY);
-                                myCanvas1.Children.Add(l);
-                            }
+                            kinectButton.Visibility = System.Windows.Visibility.Visible;
                         }
                         else
                         {
-                            if ((_pastCursorPosition.Value.X - handX) < -50)
+                            //Random r = new Random();
+                            //byte _r1 = (byte)r.Next(0, 255);
+                            //byte _r2 = (byte)r.Next(0, 255);
+                            //byte _r3 = (byte)r.Next(0, 255);
+                            //_previousFill = new SolidColorBrush(Color.FromRgb(_r1,_r2,_r3));
+
+                            if (_pastCursorPosition.Value.X > handX)
                             {
-                                //DrawLine(handX, handY);
-                                paintBrush.setPoint(_pastCursorPosition);
-                                paintBrush.setBrush(_previousFill);
-                                Line l = paintBrush.DrawLine(handX, handY);
-                                myCanvas1.Children.Add(l);
+                                if ((handX - _pastCursorPosition.Value.X) < -50)
+                                {
+                                    //DrawLine(handX, handY);
+                                    paintBrush.setPoint(_pastCursorPosition);
+                                    paintBrush.setBrush(_previousFill);
+                                    Line l = paintBrush.DrawLine(handX, handY);
+                                    myCanvas1.Children.Add(l);
+
+
+                                }
+                                else
+                                {
+                                    //DrawLine(handX, handY);
+                                    paintBrush.setPoint(_pastCursorPosition);
+                                    paintBrush.setBrush(_previousFill);
+                                    Line l = paintBrush.DrawLine(handX, handY);
+                                    myCanvas1.Children.Add(l);
+                                }
                             }
                             else
                             {
-                                //DrawLine(handX, handY);
-                                paintBrush.setPoint(_pastCursorPosition);
-                                paintBrush.setBrush(_previousFill);
-                                Line l = paintBrush.DrawLine(handX, handY);
-                                myCanvas1.Children.Add(l);
+                                if ((_pastCursorPosition.Value.X - handX) < -50)
+                                {
+                                    //DrawLine(handX, handY);
+                                    paintBrush.setPoint(_pastCursorPosition);
+                                    paintBrush.setBrush(_previousFill);
+                                    Line l = paintBrush.DrawLine(handX, handY);
+                                    myCanvas1.Children.Add(l);
+                                }
+                                else
+                                {
+                                    //DrawLine(handX, handY);
+                                    paintBrush.setPoint(_pastCursorPosition);
+                                    paintBrush.setBrush(_previousFill);
+                                    Line l = paintBrush.DrawLine(handX, handY);
+                                    myCanvas1.Children.Add(l);
+                                }
                             }
+
                         }
 
+                        _pastCursorPosition = cursorPosition;
+                        
+
                     }
-
-                    _pastCursorPosition = cursorPosition;
-
                 }
             }
+        }
+
+        private void trackWrist(Joint wrist)
+        {
+            
         }
 
         //detect if hand is overlapping over any button
@@ -374,6 +423,56 @@ namespace PaiKinect
                 }
             }
             return primaryHand;
+        }
+
+        //get the hand closest to the Kinect sensor
+        private static Joint GetPrimaryElbow(Skeleton skeleton)
+        {
+            Joint primaryElbow = new Joint();
+            if (skeleton != null)
+            {
+                primaryElbow = skeleton.Joints[JointType.ElbowLeft];
+                Joint rightElbow = skeleton.Joints[JointType.ElbowRight];
+                if (rightElbow.TrackingState != JointTrackingState.NotTracked)
+                {
+                    if (primaryElbow.TrackingState == JointTrackingState.NotTracked)
+                    {
+                        primaryElbow = rightElbow;
+                    }
+                    else
+                    {
+                        if (primaryElbow.Position.Z > rightElbow.Position.Z)
+                        {
+                            primaryElbow = rightElbow;
+                        }
+                    }
+                }
+            }
+            return primaryElbow;
+        }
+
+        //get the hand closest to the Kinect sensor
+        private static Joint GetLeftShoulder(Skeleton skeleton)
+        {
+            Joint leftShoulder = new Joint();
+            if (skeleton != null)
+            {
+                leftShoulder = skeleton.Joints[JointType.ShoulderLeft];
+  
+            }
+            return leftShoulder;
+        }
+
+        //get the hand closest to the Kinect sensor
+        private static Joint GetLeftHand(Skeleton skeleton)
+        {
+            Joint leftHand = new Joint();
+            if (skeleton != null)
+            {
+                leftHand = skeleton.Joints[JointType.HandLeft];
+                
+            }
+            return leftHand;
         }
 
         //get the skeleton closest to the Kinect sensor
@@ -493,6 +592,11 @@ namespace PaiKinect
         #endregion
 
         #region DrawingCode
+        /*
+         * This reigon of code is obsolete. It is being kept just in case.
+         *
+         */
+        
         //draws a line if it senses a change in the cursor position.
         /*
         private void DrawLine(float x, float y)
