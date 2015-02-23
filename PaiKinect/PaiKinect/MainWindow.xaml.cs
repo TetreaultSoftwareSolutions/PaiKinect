@@ -35,7 +35,8 @@ namespace PaiKinect
         private int _ColorImageStride;
         private Skeleton[] FrameSkeletons;
 
-        private double _HandPositionZStyle;
+        private bool notDrawing;
+        private bool isClickable;
 
         private PaintHandler paintBrush;                   // I AM NOT IN CONTROL OF ALL THE CODEE MUHAHAHA
 
@@ -72,9 +73,12 @@ namespace PaiKinect
             InitializeButtons();
             Generics.ResetHandPosition(kinectButton);
             kinectButton.Click += new RoutedEventHandler(kinectButton_Click);
+            //kinectButton2.Click += new RoutedEventHandler(kinectButton_Click);
             this.Loaded += Main_Loaded;
             KinectRegion.AddHandPointerMoveHandler(this, OnHandPointerMove);
             paintBrush = new PaintHandler(cursorPosition, _previousFill);
+            notDrawing = false;
+            isClickable = true;
 
         }
                                       
@@ -299,9 +303,16 @@ namespace PaiKinect
                 if(isup == true)
                 {
                     _pastCursorPosition = new Point(handX, handY);
+                    kinectButton.Visibility = System.Windows.Visibility.Visible;
+                    showButtons();
+                    
+                    
+                    //notDrawing = true;
                 }
                 else
                 {
+                    //notDrawing = false;
+                    hideButtons();
                     if (!isHandOver(kinectButton, buttons))
                     {
                         if (_pastCursorPosition == null)
@@ -316,6 +327,8 @@ namespace PaiKinect
                             //byte _r2 = (byte)r.Next(0, 255);
                             //byte _r3 = (byte)r.Next(0, 255);
                             //_previousFill = new SolidColorBrush(Color.FromRgb(_r1,_r2,_r3));
+                            
+                            
 
                             if (_pastCursorPosition.Value.X > handX)
                             {
@@ -368,35 +381,68 @@ namespace PaiKinect
             }
         }
 
-        private void trackWrist(Joint wrist)
+        private void hideButtons()
         {
-            
+            isClickable = false;
+            RED.Visibility = System.Windows.Visibility.Hidden;
+            QUIT.Visibility = System.Windows.Visibility.Hidden;
+            ERASER.Visibility = System.Windows.Visibility.Hidden;
+            GREEN.Visibility = System.Windows.Visibility.Hidden;
+            BLUE.Visibility = System.Windows.Visibility.Hidden;
+            PURPLE.Visibility = System.Windows.Visibility.Hidden;
+            YELLOW.Visibility = System.Windows.Visibility.Hidden;
+            ORANGE.Visibility = System.Windows.Visibility.Hidden;
+            BLACK.Visibility = System.Windows.Visibility.Hidden;
+            DummyCanvas.Visibility = System.Windows.Visibility.Hidden;
+            myCanvas1.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void showButtons()
+        {
+            isClickable = true;
+            RED.Visibility = System.Windows.Visibility.Visible;
+            QUIT.Visibility = System.Windows.Visibility.Visible;
+            ERASER.Visibility = System.Windows.Visibility.Visible;
+            GREEN.Visibility = System.Windows.Visibility.Visible;
+            BLUE.Visibility = System.Windows.Visibility.Visible;
+            PURPLE.Visibility = System.Windows.Visibility.Visible;
+            YELLOW.Visibility = System.Windows.Visibility.Visible;
+            ORANGE.Visibility = System.Windows.Visibility.Visible;
+            BLACK.Visibility = System.Windows.Visibility.Visible;
+            DummyCanvas.Visibility = System.Windows.Visibility.Visible;
+            myCanvas1.Visibility = System.Windows.Visibility.Hidden;
         }
 
         //detect if hand is overlapping over any button
         private bool isHandOver(FrameworkElement hand, List<System.Windows.Controls.Button> buttonslist)
         {
-            var handTopLeft = new Point(Canvas.GetLeft(hand), Canvas.GetTop(hand));
-            var handX = handTopLeft.X + hand.ActualWidth / 2;
-            var handY = handTopLeft.Y + hand.ActualHeight / 2;
-
-            foreach (System.Windows.Controls.Button target in buttonslist)
+            bool value = false;
+            if (isClickable)
             {
+                var handTopLeft = new Point(Canvas.GetLeft(hand), Canvas.GetTop(hand));
+                var handX = handTopLeft.X + hand.ActualWidth / 2;
+                var handY = handTopLeft.Y + hand.ActualHeight / 2;
 
-                if (target != null)
+                foreach (System.Windows.Controls.Button target in buttonslist)
                 {
-                    Point targetTopLeft = new Point(Canvas.GetLeft(target), Canvas.GetTop(target));
-                    if (handX > targetTopLeft.X &&
-                        handX < targetTopLeft.X + target.Width &&
-                        handY > targetTopLeft.Y &&
-                        handY < targetTopLeft.Y + target.Height)
+
+                    if (target != null)
                     {
-                        selected = target;
-                        return true;
+                        Point targetTopLeft = new Point(Canvas.GetLeft(target), Canvas.GetTop(target));
+                        if (handX > targetTopLeft.X &&
+                            handX < targetTopLeft.X + target.Width &&
+                            handY > targetTopLeft.Y &&
+                            handY < targetTopLeft.Y + target.Height)
+                        {
+                            selected = target;
+                            value = true;
+                            return value;
+                        }
                     }
                 }
             }
-            return false;
+            return value;
+            
         }
 
         //get the hand closest to the Kinect sensor
@@ -512,6 +558,7 @@ namespace PaiKinect
         {
          
 
+            
             if (ERASER.Background == Brushes.DeepSkyBlue)
             {
                 ERASER.Background = Brushes.DimGray;
