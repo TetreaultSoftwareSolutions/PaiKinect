@@ -25,10 +25,11 @@ namespace PaiKinect
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Page
+    public partial class MainWindow : Window
     {
         #region Variables
 
+        public static int DEFAULTTHICKNESS = 10;
         public KinectSensor _Kinect;
         private WriteableBitmap _ColorImageBitmap;
         private Int32Rect _ColorImageBitmapRect;
@@ -76,7 +77,7 @@ namespace PaiKinect
             //kinectButton2.Click += new RoutedEventHandler(kinectButton_Click);
             this.Loaded += Main_Loaded;
             KinectRegion.AddHandPointerMoveHandler(this, OnHandPointerMove);
-            paintBrush = new PaintHandler(cursorPosition, _previousFill);
+            paintBrush = new PaintHandler(cursorPosition, _previousFill, DEFAULTTHICKNESS);
             notDrawing = false;
             isClickable = true;
 
@@ -91,7 +92,8 @@ namespace PaiKinect
         //Make the buttons that will appear in the application
         private void InitializeButtons()
         {
-            buttons = new List<System.Windows.Controls.Button> { QUIT, ERASER, RED, ORANGE, BLUE, GREEN, YELLOW, BLACK, PURPLE };
+            buttons = new List<System.Windows.Controls.Button> { QUIT, ERASER, RED, ORANGE, BLUE, GREEN, YELLOW, BLACK, PURPLE, CLEAR, 
+                                                                SMALLLINESIZE, MEDIUMLINESIZE, LARGELINESIZE};
         }
         //Make sure that the Kinect is in a nice generic state so nothing can go wrong
         private void UnregisterEvents()
@@ -410,7 +412,7 @@ namespace PaiKinect
             ORANGE.Visibility = System.Windows.Visibility.Visible;
             BLACK.Visibility = System.Windows.Visibility.Visible;
             DummyCanvas.Visibility = System.Windows.Visibility.Visible;
-            myCanvas1.Visibility = System.Windows.Visibility.Hidden;
+            myCanvas1.Visibility = System.Windows.Visibility.Visible;
         }
 
         //detect if hand is overlapping over any button
@@ -634,6 +636,26 @@ namespace PaiKinect
         {
             UnregisterEvents();
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void CLEAR_Click(object sender, RoutedEventArgs e)
+        {
+            myCanvas1.Children.Clear();
+        }
+
+        private void SML_Click(object sender, RoutedEventArgs e)
+        {
+            paintBrush.setStrokeThickness(5);
+        }
+
+        private void MED_Click(object sender, RoutedEventArgs e)
+        {
+            paintBrush.setStrokeThickness(10);
+        }
+        
+        private void LRG_Click(object sender, RoutedEventArgs e)
+        {
+            paintBrush.setStrokeThickness(20);
         }
 
         #endregion

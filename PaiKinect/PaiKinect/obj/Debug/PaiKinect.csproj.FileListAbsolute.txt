@@ -15,6 +15,6 @@ c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug
 c:\users\ben\documents\visual studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect.pdb
 C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Microsoft.Kinect.Toolkit.Controls.dll
 C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Microsoft.Kinect.Toolkit.Interaction.dll
-C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Database1.mdf
-C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Database1_log.ldf
 C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\obj\Debug\PaiKinect_Content.g.cs
+C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Database_Main.mdf
+C:\Users\Ben\Documents\Visual Studio 2013\Projects\PaiKinect\PaiKinect\bin\Debug\Database_Main_log.ldf

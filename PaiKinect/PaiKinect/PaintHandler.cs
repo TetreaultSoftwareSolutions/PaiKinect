@@ -29,14 +29,16 @@ namespace PaiKinect
         
         public Point? point;  //The current point that the user's hand is on
         public SolidColorBrush brush;  //The brush being used to draw the line
+        int thickness; //The Stroke thickness of the brush
         
         /*
          * This constructor instantiates the brush and point variables.
          */
-        public PaintHandler(Point? inputPoint, SolidColorBrush brush){
+        public PaintHandler(Point? inputPoint, SolidColorBrush brush, int strokeThickness){
             
             this.point = inputPoint;
             this.brush = brush;
+            thickness = strokeThickness;
         }
 
         #region Getters_and_Setters
@@ -48,6 +50,11 @@ namespace PaiKinect
         public void setBrush(SolidColorBrush brush)
         {
             this.brush = brush;
+        }
+        
+        public void setStrokeThickness(int thickness)
+        {
+            this.thickness = thickness;
         }
         #endregion
 
@@ -65,7 +72,7 @@ namespace PaiKinect
                 Y1 = point.Value.Y,
                 X2 = x,
                 Y2 = y,
-                StrokeThickness = 10,
+                StrokeThickness = thickness,
                 StrokeLineJoin = PenLineJoin.Round
             };
 
