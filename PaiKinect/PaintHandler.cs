@@ -32,6 +32,10 @@ namespace PaiKinect
         public Point? point;  //The current point that the user's hand is on
         public SolidColorBrush brush;  //The brush being used to draw the line
         int thickness; //The Stroke thickness of the brush
+
+        private static int SIZE_INCREMENT = 50;
+
+        
         
         /*
          * This constructor instantiates the brush and point variables.
@@ -88,7 +92,7 @@ namespace PaiKinect
 
         }
 
-        public Ellipse DrawEllipse(float x, float y)
+        public Ellipse DrawEllipse()
         {
             Ellipse e = new Ellipse
             {
@@ -99,13 +103,10 @@ namespace PaiKinect
                 Margin = new Thickness(10, 10, 0, 0)
 
             };
-
-
-
             return e;
         }
 
-        public Rectangle DrawRectangle(float x, float y, bool isSquare)
+        public Rectangle DrawRectangle(bool isSquare)
         {
             if (isSquare)
             {
@@ -119,7 +120,6 @@ namespace PaiKinect
 
                 };
                 return r;
-            
             }
             else
             {
@@ -134,9 +134,38 @@ namespace PaiKinect
                 };
                 return r;
             }
-
-            
         }
+
+        public Ellipse ChangeEllipseSize(Ellipse e, bool isIncrease)
+        {
+            if(isIncrease)
+            {
+                e.Width = e.Width + SIZE_INCREMENT;
+                e.Height = e.Height + SIZE_INCREMENT;    
+            }
+            else
+            {
+                e.Width = e.Width - SIZE_INCREMENT;
+                e.Height = e.Height - SIZE_INCREMENT;
+            }           
+            return e;
+        }
+
+        public Rectangle ChangeRectangleSize(Rectangle r, bool isIncrease)
+        {
+            if(isIncrease)
+            {
+                r.Width = r.Width + SIZE_INCREMENT;
+                r.Height = r.Height + SIZE_INCREMENT;
+            }
+            else
+            {
+                r.Width = r.Width - SIZE_INCREMENT;
+                r.Height = r.Height - SIZE_INCREMENT;
+            }
+            return r;
+        }
+
 
     }
 }

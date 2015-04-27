@@ -62,6 +62,14 @@ namespace PaiKinect
         List<System.Windows.Controls.Button> buttons;
         static System.Windows.Controls.Button selected;
 
+        
+
+        public bool shapeChanged;
+        public bool shapeIncreased;
+        public bool shapeDecreased;
+        public int amtChanged;
+        private static int SIZE_INCREMENT = 50;
+
       
 
         float handX;
@@ -87,6 +95,8 @@ namespace PaiKinect
            
             isClickable = true;
 
+            amtChanged = 0;
+
         }
                                       
 
@@ -99,7 +109,8 @@ namespace PaiKinect
         private void InitializeButtons()
         {
             buttons = new List<System.Windows.Controls.Button> { QUIT, ERASER, RED, ORANGE, BLUE, GREEN, YELLOW, BLACK, PURPLE, CLEAR, 
-                                                                SMALLLINESIZE, MEDIUMLINESIZE, LARGELINESIZE, SQUARE, CIRCLE, RECTANGLE};
+                                                                SMALLLINESIZE, MEDIUMLINESIZE, LARGELINESIZE, SQUARE, CIRCLE, RECTANGLE,
+                                                                SHAPEINCREASE, SHAPEDECREASE};
         }
         //Make sure that the Kinect is in a nice generic state so nothing can go wrong
         private void UnregisterEvents()
@@ -300,7 +311,21 @@ namespace PaiKinect
                     
                     if(drawingSquare)
                     {
-                        Rectangle square = paintBrush.DrawRectangle(handX, handY, true);
+                        Rectangle square = paintBrush.DrawRectangle(true);
+                        if(shapeIncreased)
+                        {
+                            square.Width += amtChanged;
+                            square.Height += amtChanged;
+                            shapeIncreased = false;
+                            amtChanged = 0;
+                        }
+                        if(shapeDecreased)
+                        {
+                            square.Width -= amtChanged;
+                            square.Height -= amtChanged;
+                            shapeDecreased = false;
+                            amtChanged = 0;
+                        }
                         myCanvas1.Children.Add(square);
                         Canvas.SetLeft(square, handX - (square.Width / 2));
                         Canvas.SetTop(square, handY - (square.Height / 2));
@@ -308,7 +333,20 @@ namespace PaiKinect
                     }
                     if(drawingRectangle)
                     {
-                        Rectangle rectangle = paintBrush.DrawRectangle(handX, handY, false);
+                        Rectangle rectangle = paintBrush.DrawRectangle(false);
+                        if (shapeIncreased)
+                        {
+                            rectangle.Width += amtChanged;
+                            rectangle.Height += amtChanged;
+                            shapeIncreased = false;
+                            amtChanged = 0;
+                        }
+                        if (shapeDecreased)
+                        {
+                            rectangle.Width -= amtChanged;
+                            rectangle.Height -= amtChanged;
+                            shapeDecreased = false;
+                        }
                         myCanvas1.Children.Add(rectangle);
                         Canvas.SetLeft(rectangle, handX - (rectangle.Width / 2));
                         Canvas.SetTop(rectangle, handY - (rectangle.Height / 2));
@@ -316,7 +354,21 @@ namespace PaiKinect
                     }
                     if(drawingCircle)
                     {
-                        Ellipse circle = paintBrush.DrawEllipse(handX, handY);
+                        Ellipse circle = paintBrush.DrawEllipse();
+                        if (shapeIncreased)
+                        {
+                            circle.Width += amtChanged;
+                            circle.Height += amtChanged;
+                            shapeIncreased = false;
+                            amtChanged = 0;
+                        }
+                        if (shapeDecreased)
+                        {
+                            circle.Width = circle.Width - amtChanged;
+                            circle.Height = circle.Height - amtChanged;
+                            shapeDecreased = false;
+                            amtChanged = 0;
+                        }
                         myCanvas1.Children.Add(circle);
                         Canvas.SetLeft(circle, handX - (circle.Width / 2));
                         Canvas.SetTop(circle, handY - (circle.Height / 2));
@@ -654,6 +706,28 @@ namespace PaiKinect
         private void RECTANGLE_Click(object sender, RoutedEventArgs e)
         {
             drawingRectangle = true;
+        }
+
+        private void SHAPEDECREASE_Click(object sender, RoutedEventArgs e)
+        {
+            /*if(drawingCircle) circle = paintBrush.ChangeEllipseSize(circle, false);
+            if(drawingSquare) square = paintBrush.ChangeRectangleSize(square, false);
+            if (drawingRectangle) rectangle = paintBrush.ChangeRectangleSize(rectangle, false);*/
+            shapeDecreased = true;
+            if (!(100 - amtChanged < SIZE_INCREMENT))
+            {
+                amtChanged = amtChanged + SIZE_INCREMENT;
+            }
+
+        }
+
+        private void SHAPEINCREASE_Click(object sender, RoutedEventArgs e)
+        {
+            /*if (drawingCircle) circle = paintBrush.ChangeEllipseSize(circle, true);
+            if (drawingSquare) square = paintBrush.ChangeRectangleSize(square, true);
+            if (drawingRectangle) rectangle = paintBrush.ChangeRectangleSize(rectangle, true);*/
+            shapeIncreased = true;
+            amtChanged = amtChanged + SIZE_INCREMENT;
         }
 
         #endregion
