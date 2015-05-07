@@ -38,7 +38,7 @@
         </Border>
 
         <Border x:Name="border2" Background="#00000000" ClipToBounds="True">
-            <Canvas x:Name="DummyCanvas" Width="1920" Height="1080" Margin="10,0,-10,0">
+            <Canvas x:Name="DummyCanvas" Width="1920" Height="1080">
 
 
 
@@ -49,12 +49,12 @@
                     </LinearGradientBrush>
                 </Canvas.Background>
 
-                <Button x:Name="QUIT" Content="QUIT" Height="100" Canvas.Left="142" Canvas.Top="662" Width="100" Click="QUIT_Click" Background="#FFAE1C1C" FontSize="24" FontFamily="Cooper Black" >
+                <Button x:Name="QUIT" Content="QUIT" Height="75" Canvas.Left="1452" Canvas.Top="765" Width="75"  Background="#FFAE1C1C" FontSize="15" FontFamily="Cooper Black" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="White">
+                         StrokeThickness="1" Fill="Red">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -62,17 +62,15 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="ERASER" Content="ERASER" Height="100" Canvas.Left="247" Canvas.Top="280" Width="100" Click="ERASER_Click" FontSize="20" BorderBrush="Black" Foreground="Black" FontFamily="Cooper Black" >
+                <Button x:Name="ERASER" Content="ERASER" Height="75" Canvas.Left="1378" Canvas.Top="520" Width="75"  FontSize="15" BorderBrush="Black" Foreground="Black" FontFamily="Cooper Black" >
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="Pink">
+                         StrokeThickness="1" Fill="Pink">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -80,11 +78,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="RED" Content="" Height="100" Canvas.Left="202" Canvas.Top="80" Width="100" Click="RED_Click" Background="Red" FontSize="24" FontFamily="Cooper Black">
+                <Button x:Name="RED" Content="" Height="75" Canvas.Left="1452" Canvas.Top="295" Width="75"  Background="Red" FontSize="24" FontFamily="Cooper Black">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -97,11 +93,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="GREEN" Content="" Height="100" Canvas.Top="80" Width="100" Click="GREEN_Click" Background="Green" FontSize="24" FontFamily="Cooper Black" Canvas.Left="102" >
+                <Button x:Name="GREEN" Content="" Height="75" Canvas.Top="445" Width="76"  Background="Green" FontSize="24" FontFamily="Cooper Black" Canvas.Left="1377"  >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -114,11 +108,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="YELLOW" Content="" Height="100" Canvas.Left="302" Canvas.Top="80" Width="100" Click="YELLOW_Click" Background="Yellow" FontSize="24"  FontFamily="Cooper Black">
+                <Button x:Name="YELLOW" Content="" Height="75" Canvas.Left="1452" Canvas.Top="370" Width="75"  Background="Yellow" FontSize="24"  FontFamily="Cooper Black">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -131,11 +123,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="BLUE" Content="" Height="100" Canvas.Left="102" Canvas.Top="180" Width="100" Click="BLUE_Click" Background="Blue" FontSize="24" FontFamily="Cooper Black" >
+                <Button x:Name="BLUE" Content="" Height="75" Canvas.Left="1452" Canvas.Top="445" Width="75"  Background="Blue" FontSize="24" FontFamily="Cooper Black" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -148,11 +138,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="PURPLE" Content="" Height="100" Canvas.Left="202" Canvas.Top="180" Width="100" Click="PURPLE_Click" Background="Purple" FontSize="24" FontFamily="Cooper Black" >
+                <Button x:Name="PURPLE" Content="" Height="76" Canvas.Left="1377" Canvas.Top="369" Width="75"  Background="Purple" FontSize="24" FontFamily="Cooper Black" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -165,11 +153,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="ORANGE" Content="" Height="100" Canvas.Left="302" Canvas.Top="180" Width="100" Click="ORANGE_Click" Background="Orange" FontSize="24"  FontFamily="Cooper Black">
+                <Button x:Name="ORANGE" Content="" Height="75" Canvas.Left="1377" Canvas.Top="294" Width="75"  Background="Orange" FontSize="24"  FontFamily="Cooper Black">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -182,11 +168,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="BLACK" Content="" Height="100" Canvas.Left="142" Canvas.Top="280" Width="100" Click="BLACK_Click" Background="Black" FontSize="24" FontFamily="Cooper Black">
+                <Button x:Name="BLACK" Content="" Height="76" Canvas.Left="1451" Canvas.Top="520" Width="76" Background="Black" FontSize="24" FontFamily="Cooper Black">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -199,11 +183,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="CLEAR" Content="CLEAR" Height="100" Canvas.Left="247" Canvas.Top="662" Width="100" Click="CLEAR_Click" Background="Gray" FontSize="24" FontFamily="Cooper Black" >
+                <Button x:Name="CLEAR" Content="CLEAR" Height="75" Canvas.Left="1377" Canvas.Top="765" Width="75" Background="Gray" FontSize="15" FontFamily="Cooper Black" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -216,12 +198,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="SMALLLINESIZE" Content="SMALL" Height="100" Canvas.Top="560" Width="100" Click="SML_Click" Background="Gray" FontSize="22
-           " FontFamily="Cooper Black" Canvas.Left="97" >
+                <Button x:Name="SMALLLINESIZE" Content="SMALL" Height="75" Canvas.Top="615" Width="75" Background="Gray" FontSize="15" FontFamily="Cooper Black" Canvas.Left="1377"  >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -234,11 +213,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="MEDIUMLINESIZE" Content="MEDIUM" Height="100" Canvas.Left="202" Canvas.Top="559" Width="100" Click="MED_Click" Background="Gray" FontSize="20" FontFamily="Cooper Black" >
+                <Button x:Name="MEDIUMLINESIZE" Content="MEDIUM" Height="75" Canvas.Left="1452" Canvas.Top="615" Width="75" Background="Gray" FontSize="15" FontFamily="Cooper Black" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -251,11 +228,9 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
-                <Button x:Name="LARGELINESIZE" Content="LARGE" Height="100" Canvas.Left="302" Canvas.Top="557" Width="100" Click="LRG_Click" Background="Gray" FontSize="24" FontFamily="Cooper Black" >
+                <Button x:Name="LARGELINESIZE" Content="LARGE" Height="75" Canvas.Left="1414" Canvas.Top="690" Width="76" Background="Gray" FontSize="15" FontFamily="Cooper Black" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -268,17 +243,15 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
 
-                <Button x:Name="SQUARE" Content="SQUARE" Height="100" Canvas.Left="202" Canvas.Top="420" Width="100" Click="SQUARE_Click" Background="Bisque" FontSize="18" FontFamily="Cooper Black" >
+                <Button x:Name="SQUARE" Content="SQUARE" Height="75" Canvas.Left="1377" Canvas.Top="43" Width="75" Background="White" FontSize="15" FontFamily="Cooper Black" BorderBrush="Black" Foreground="White" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="Bisque">
+                         StrokeThickness="2" Fill="Navy">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -286,17 +259,15 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
 
-                <Button x:Name="RECTANGLE" Content="RECTANGLE" Height="100" Canvas.Left="102" Canvas.Top="422" Width="100" Click="RECTANGLE_Click" Background="Bisque" FontFamily="Cooper Black" FontSize="14" >
+                <Button x:Name="RECTANGLE" Content="RECTANGLE" Height="75" Canvas.Left="1452" Canvas.Top="44" Width="75" Background="Bisque" FontFamily="Cooper Black" Foreground="White" FontSize="10" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="Bisque">
+                         StrokeThickness="2" Fill="Navy">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -304,17 +275,15 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
 
-                <Button x:Name="CIRCLE" Content="CIRCLE" Height="100" Canvas.Left="302" Canvas.Top="419" Width="100" Click="CIRCLE_Click" Background="Bisque" FontSize="22" FontFamily="Cooper Black" >
+                <Button x:Name="CIRCLE" Content="CIRCLE" Height="75" Canvas.Left="1414" Canvas.Top="113" Width="75" Background="Bisque" FontSize="15" FontFamily="Cooper Black" Foreground="White" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="Bisque">
+                         StrokeThickness="2" Fill="Navy">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -322,17 +291,15 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
 
-                <Button x:Name="SHAPEINCREASE" Content="+" Height="100" Canvas.Left="428" Canvas.Top="368" Width="100" Click="SHAPEINCREASE_Click" Background="Bisque" FontSize="50" FontFamily="Cooper Black" >
+                <Button x:Name="SHAPEINCREASE" Content="+" Height="75" Canvas.Left="1377" Canvas.Top="188" Width="75" Background="Bisque" FontSize="50" FontFamily="Cooper Black" Foreground="White" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="Bisque">
+                         StrokeThickness="2" Fill="Navy">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -340,17 +307,15 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
 
-                <Button x:Name="SHAPEDECREASE" Content="-" Height="100" Canvas.Left="428" Canvas.Top="468" Width="100" Click="SHAPEDECREASE_Click" Background="Bisque" FontSize="50" FontFamily="Cooper Black" >
+                <Button x:Name="SHAPEDECREASE" Content="-" Height="75" Canvas.Left="1452" Canvas.Top="188" Width="75" Background="Bisque" FontSize="50" FontFamily="Cooper Black" Foreground="White" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Stroke="Black"
-                         StrokeThickness="2" Fill="Bisque">
+                         StrokeThickness="2" Fill="Navy">
 
                                 </Ellipse>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -358,9 +323,7 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect>
+
                 </Button>
 
                 <Controls:HoverButton Margin="0" Padding="0" x:Name="kinectButton" ImageSize="50"                                            
@@ -369,9 +332,11 @@
                                       ImageSource="/PaiKinect;component/Images/right.png" 
                                 ActiveImageSource="/PaiKinect;component/Images/right.png"
                                 TimeInterval="1000"  Panel.ZIndex="1000" Canvas.Left="10" />
-                <Label Content="       Change Line Size" Canvas.Left="102" Canvas.Top="525" Width="300" FontFamily="Cooper Black" FontSize="22"/>
-                <Label Content="      Pre-made Shape  " Canvas.Left="102" Canvas.Top="386" Width="300" FontFamily="Cooper Black" FontSize="24"/>
-                <Label Content="          COLORS" RenderTransformOrigin="14.769,2.729" Canvas.Left="102" Canvas.Top="37" Width="300" FontFamily="Cooper Black" FontSize="30"/>
+                <Label Content="       Change Line Size" Canvas.Left="1353" Canvas.Top="593" Width="191" FontFamily="Cooper Black" FontSize="15"/>
+                <Label Content="      Pre-made Shape  " Canvas.Left="1364" Canvas.Top="17" Width="163" FontFamily="Cooper Black" FontSize="15"/>
+                <Label Content="       COLORS" RenderTransformOrigin="14.769,2.729" Canvas.Left="1386" Canvas.Top="268" Width="120" FontFamily="Cooper Black" FontSize="15">
+
+                </Label>
 
             </Canvas>
         </Border>

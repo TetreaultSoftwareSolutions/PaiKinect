@@ -28,17 +28,23 @@ namespace PaiKinect
     class PaintHandler
     {
 
-        
-        public Point? point;  //The current point that the user's hand is on
-        public SolidColorBrush brush;  //The brush being used to draw the line
-        int thickness; //The Stroke thickness of the brush
 
+        /*The current point that the user's hand is on*/
+        public Point? point;
+        /*The brush being used to draw the line*/
+        public SolidColorBrush brush;
+        /*The Stroke thickness of the brush*/
+        int thickness; 
+        /*The increment that the shapes change size with*/
         private static int SIZE_INCREMENT = 50;
 
         
         
         /*
          * This constructor instantiates the brush and point variables.
+         * @param inputPoint the point that the cursor is at
+         * @param brush the brush used to add the lines
+         * @param strokeThickness the thickness of the line
          */
         public PaintHandler(Point? inputPoint, SolidColorBrush brush, int strokeThickness){
             
@@ -48,16 +54,26 @@ namespace PaiKinect
         }
 
         #region Getters_and_Setters
+        /**
+         * Sets the point location
+         * @param point the point that is being set
+         */
         public void setPoint(Point? point)
         {
             this.point = point;
         }
-
+        /**
+         * Sets the brush being used to draw the lines
+         * @param brush the brush that will be changed
+         */
         public void setBrush(SolidColorBrush brush)
         {
             this.brush = brush;
         }
-        
+        /**
+         * Sets the stroke thickness
+         * @param thickness the number that will be used to determine the thickness of the stroke
+         */
         public void setStrokeThickness(int thickness)
         {
             this.thickness = thickness;
@@ -67,6 +83,9 @@ namespace PaiKinect
         /*
          * This method takes two floats, and creates a line based on those floats passed in (by the kinect sensor). It
          * then returns the line created.
+         * @param x The x Coordinate
+         * @param y The y Coordinate
+         * @return the line that is being added to the canvas
          */
         public Line DrawLine(float x, float y)
         {
@@ -91,7 +110,10 @@ namespace PaiKinect
 
 
         }
-
+        /**
+         * Draws an ellipse and returns it
+         * @return the ellipse being added to the canvas
+         */
         public Ellipse DrawEllipse()
         {
             Ellipse e = new Ellipse
@@ -105,7 +127,11 @@ namespace PaiKinect
             };
             return e;
         }
-
+        /**
+         * Draws a rectangle or square and return sit
+         * @param isSquare if the object being drawn is a square or a rectangle
+         * @return the object being added to the canvas
+         */
         public Rectangle DrawRectangle(bool isSquare)
         {
             if (isSquare)
@@ -135,7 +161,12 @@ namespace PaiKinect
                 return r;
             }
         }
-
+        /**
+         * Changes the size of the Ellipse
+         * @param e The ellipse that is being changed
+         * @bool isIncrease if the size will be increased or decreased
+         * @return the ellipse that was changed
+         */
         public Ellipse ChangeEllipseSize(Ellipse e, bool isIncrease)
         {
             if(isIncrease)
@@ -150,7 +181,12 @@ namespace PaiKinect
             }           
             return e;
         }
-
+        /**
+        * Changes the size of the rectangle object
+        * @param e The rectangle object that is being changed
+        * @bool isIncrease if the size will be increased or decreased
+        * @return the rectangle object that was changed
+        */
         public Rectangle ChangeRectangleSize(Rectangle r, bool isIncrease)
         {
             if(isIncrease)
